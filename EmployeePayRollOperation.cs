@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EmployeePayRoll_UsingThreads
 {
@@ -103,6 +104,34 @@ namespace EmployeePayRoll_UsingThreads
                 {
                     AddEmployee(employeeData);
                 });
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+
+        //Add Multiple Employees To the PayRoll With Thread
+
+        public bool AddMultipleEmployeeWithThread(List<EmployeeDetails> employeesList)
+        {
+            try
+            {
+                employeesList.ForEach(employeeData =>
+                {
+                    Task thread = new Task(() =>
+                    {
+                        Console.WriteLine("Employee being added: " + employeeData.EmployeeName);
+                        AddEmployee(employeeData);
+                        Console.WriteLine("Employee added: " + employeeData.EmployeeName);
+                    }
+                    );
+                    thread.Start();
+                }
+                );
             }
             catch
             {
