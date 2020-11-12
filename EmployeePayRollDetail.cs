@@ -19,15 +19,20 @@ namespace EmployeePayRoll_UsingThreads
             employeeDetails.Add(new EmployeeDetails("MSD", 100000, new DateTime(2020, 11, 11), 'M', "9999999999", "Legend", "Ranchi", 100, 100, 100, 100));
 
 
-            
-            employeePayRollOperation.AddMultipleEmployee(employeeDetails);              //Adding Values without Thread
-            Console.WriteLine("Added Successfully Without Threads");
+            DateTime startDateTime = DateTime.Now;
+            employeePayRollOperation.AddMultipleEmployee(employeeDetails);                        //Adding Values without Thread
+            DateTime endDateTime = DateTime.Now;
+            Console.WriteLine("Without Thread : " + (endDateTime - startDateTime));               // Time Taken For Addition Without Thread
 
 
 
-            employeePayRollOperation.AddMultipleEmployeeWithThread(employeeDetails);            //Adding Values With Threads
-            Console.WriteLine("Added Succesfully With Threads");
+            DateTime startDateTimeThread = DateTime.Now;
+            employeePayRollOperation.AddMultipleEmployeeWithThread(employeeDetails);              //Adding Values With Threads
+            DateTime endDateTimeThread = DateTime.Now;
+            Console.WriteLine("With Thread : " + (endDateTimeThread - startDateTimeThread));       // Time Taken For Addition With Thread
         }
 
+
+            
     }
 }
