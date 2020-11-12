@@ -2,11 +2,16 @@
 
 namespace EmployeePayRoll_UsingThreads
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Employee PayRoll Services");
+
+            EmployeePayRollDetail employeePayRollDetail = new EmployeePayRollDetail();             //Declare object of EmployeePayRollDetail
+
+            employeePayRollDetail.AddEmployeesToPayroll();                                         //Addition of Values 
+
         }
     }
 }
